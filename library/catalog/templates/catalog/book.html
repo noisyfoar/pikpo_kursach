@@ -1,0 +1,13 @@
+{% extends 'catalog/index.html' %}
+{% block title %}Книга: {{ book.title }}{% endblock %}
+  {% block content %}
+        <img src="{{MEDIA_URL}}{{ book.image.url}}" />
+          <h2>{{ book.title }} {{ book.author }}</h2>
+            <h3>Жанры:{% for g in book.genre.all %} {{ g.genreName }}{% endfor %}</h3>
+          <p>
+            {{book.summary}}
+          </p>
+            <form action="{% url 'catalog:renewBook'  book.id %}"><button class="form_button">Отдать во временное пользование</button></form>
+            <form action="{% url 'catalog:updateBook' book.id %}"><button class="form_button">Изменить информацию о книге</button></form>
+            <form action="{% url 'catalog:deleteBook' book.id %}"><button class="form_button">Удалить книгу</button></form>
+{% endblock %}

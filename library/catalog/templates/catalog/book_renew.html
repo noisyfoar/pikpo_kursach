@@ -1,0 +1,18 @@
+{% extends "catalog/index.html" %}
+
+{% block content %}
+<div class="form_form">
+    <h1>Title: {{book.title}}</h1>
+    <p>Client: {{book.client}}</p>
+    <p>Return date: {{book.return_date}}</p>
+    
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>
+        {{ form.as_table }}
+        </table>
+        <input type="submit" value="Отдать книгу на пользование">
+    </form>
+    Нет подходящего клиента?  <a href="{% url 'catalog:addClient' book.id %}" class="text-danger">Добавить клиента</a>
+    </div>
+{% endblock %}

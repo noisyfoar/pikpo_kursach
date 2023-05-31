@@ -1,0 +1,11 @@
+{% extends 'catalog/index.html' %}
+{% block title %}Клиент: {{ client.first_name }} {{ client.last_name }}{% endblock %}
+  {% block content %}
+          <h2>{{ client.first_name }} {{ client.last_name }}</h2>
+          <h3>Книги:</h3>
+<div class="space">
+  {% for book in client.book_set.all %}
+    {% include 'catalog/book_item.html' with book_item=book %}
+  {% endfor %}
+</div>
+{% endblock %}

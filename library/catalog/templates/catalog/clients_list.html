@@ -1,0 +1,12 @@
+{% extends 'catalog/index.html' %}
+{% block title %}
+Авторы
+{% endblock %}
+{% block content %}
+<div class = "space">
+    {% for client in clients %}
+        {% include 'catalog/client_item.html' with client_item=client %}
+    {%endfor%}
+</div>
+
+{% endblock %}
